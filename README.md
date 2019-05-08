@@ -28,5 +28,45 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Install crypto-js
 
+```
 npm install crypto-js --save
 npm install @types/crypto-js --save-dev
+```
+
+## Update package-lock.json
+
+```
+tar ^4 ==> tar ^4.4.8
+```
+
+and
+
+```
+    "tar": {
+      "version": "2.2.1",
+      "resolved": "https://registry.npmjs.org/tar/-/tar-2.2.1.tgz",
+      "integrity": "sha1-jk0qJWwOIYXGsYrWlK7JaLg8sdE=",
+      "dev": true,
+      "optional": true,
+      "requires": {
+        "block-stream": "*",
+        "fstream": "^1.0.2",
+        "inherits": "2"
+      }
+    },
+```
+to
+```
+    "tar": {
+      "version": "4.4.8",
+      "resolved": "https://registry.npmjs.org/tar/-/tar-4.4.8.tgz",
+      "integrity": "sha512-LzHF64s5chPQQS0IYBn9IN5h3i98c12bo4NCO7e0sGM2llXQ3p2FGC5sdENN4cTW48O915Sh+x+EXx7XW96xYQ==",
+      "dev": true,
+      "optional": true,
+      "requires": {
+        "block-stream": "*",
+        "fstream": "^1.0.2",
+        "inherits": "2"
+      }
+    },
+```
