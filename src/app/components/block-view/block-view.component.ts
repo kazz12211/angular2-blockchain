@@ -1,0 +1,36 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { BlockchainService } from 'src/app/services/blockchain.service';
+import { Block } from 'src/app/models/Block';
+
+@Component({
+  selector: 'app-block-view',
+  templateUrl: './block-view.component.html',
+  styleUrls: ['./block-view.component.css']
+})
+export class BlockViewComponent implements OnInit {
+
+  @Input() public block: Block;
+
+  @Input() public selectedBlock: Block;
+
+  blocksInChain: Block[];
+
+  constructor(private blockchainService: BlockchainService) { 
+    this.blocksInChain = blockchainService.blockchainInstance.chain;
+  }
+
+  ngOnInit() {
+  }
+
+  blockHasTx(): boolean {
+    return this.block.transactions.length > 0;
+  }
+
+  isSelectedBlock(): boolean {
+    return this.block === this.selectedBlock;
+  }
+
+  getBlockNumber(): number {
+    return this.blocksInChain.indexOf(this.block) + 1;
+  }
+}

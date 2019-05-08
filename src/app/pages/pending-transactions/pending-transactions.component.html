@@ -1,0 +1,21 @@
+<div class="container" style="margin-top:20px;">
+  <div class="alert alert-success" role="alert" *ngIf="txAdded">
+    取引の作成に成功しました。
+  </div>
+
+  <h2>保留中の取引</h2>
+  <p>次のブロックの取引が保留中です。マイニング処理を行った後で次のブロックは作られます。</p>
+
+  <app-transactions-table [transactions]="pendingTransactions"></app-transactions-table>
+
+  <button class="btn btn-primary" *ngIf="pendingTransactions.length > 0 && !miningInProgress" (click)="minePendingTransactions()">
+    マイニング開始
+  </button>
+
+  <div *ngIf="miningInProgress">
+    ブロックをマイニング中...
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+  </div>
+</div>

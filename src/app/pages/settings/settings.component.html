@@ -1,0 +1,29 @@
+<div class="container" style="margin-top:20px;">
+  <h2>設定</h2>
+  <p>トランザクションやブロックが作成されるときにのブロックチェーンの振る舞いを設定します。</p>
+
+  <br>
+
+  <div class="form-group">
+    <label for="difficulty">難易度</label>
+    <input type="number" name="difficulty" id="difficulty" class="form-control" aria-describedBy="difficultyHelp"
+      [(ngModel)]="blockchain.difficulty" />
+    <small id="difficultyHelp" class="form-text text-muted">
+      難易度はマイニングプロセスの長さを決めます。大きな数値を設定するとマイニングに時間がかかります。
+      <br>既定値: 2
+    </small>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label for="miningReward">マイニング報酬</label>
+    <input type="number" name="miningReward" id="miningReward" class="form-control" aria-describedBy="miningRewardHelp"
+      [(ngModel)]="blockchain.miningReward" />
+    <small id="miningRewardHelp" class="form-text text-muted">
+      新しいブロックを作成できた際に、マイナーが受け取る報酬を設定します。
+      <br>既定値: 100
+    </small>
+  </div>
+
+</div>

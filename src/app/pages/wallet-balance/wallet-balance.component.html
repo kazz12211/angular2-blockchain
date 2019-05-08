@@ -1,0 +1,21 @@
+<div class="container" style="margin-top:20px;">
+  <h2>財布の中身</h2>
+
+  <p style="word-wrap:break-word;">
+    <strong>アドレス</strong>
+    <br>
+    {{walletAddress}}
+  </p>
+
+  <p>
+    <strong>残高</strong>
+    <br>
+    {{balance}}
+  </p>
+
+  <hr>
+
+  <h2>取引</h2>
+  <p *ngIf="transactions.length === 0">まだ取引が行われていません</p>
+  <app-transactions-table [transactions]="transactions" *ngIf="transactions.length > 0"></app-transactions-table>
+</div>

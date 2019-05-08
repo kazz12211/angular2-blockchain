@@ -1,0 +1,50 @@
+<p *ngIf="transactions.length === 0">このブロックにはトランザクションがありません</p>
+
+<table class="table table-hover table-striped" *ngIf="transactions.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">送り手</th>
+      <th scope="col">受け手</th>
+      <th scope="col">金額</th>
+      <th scope="col">時刻</th>
+      <th scope="col">正当</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tx of transactions; index as index">
+      <td>
+        {{index}}
+      </td>
+      <td class="text-truncate" style="max-width: 100px;">
+        <a [routerLink]="['/wallet', tx.fromAddress]" *ngIf="tx.fromAddress !== null">{{tx.fromAddress}}</a>
+        <span *ngIf="tx.fromAddress === null">システム</span>
+        <span class="text-muted" *ngIf="blockchainService.addressIsFromCurrentUser(tx.fromAddress)">
+          <br><small>(あなた)</small>
+        </span>
+      </td>
+      <td class="text-truncate" style="max-width: 100px;">
+        <a [routerLink]="['/wallet', tx.toAddress]" >{{tx.toAddress}}</a>
+        <span class="text-muted" *ngIf="blockchainService.addressIsFromCurrentUser(tx.toAddress)">
+          <br><small>(あなた)</small>
+        </span>
+      </td>
+      <td>
+        {{tx.amount}}
+        <span class="text-muted" *ngIf="tx.fromAddress === null">
+          <br><small>(報酬)</small>
+        </span>
+      </td>
+      <td>
+        {{tx.timestamp}}<br>
+        <span class="text-muted">
+          <small>{{tx.timestamp | date: 'yyyy-MM-dd HH:mm'}}</small>
+        </span>
+      </td>
+      <td style="max-width: 40px;">
+        <span *ngIf="tx.isValid()">✓</span>
+        <span *ngIf="!tx.isValid()">✗</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

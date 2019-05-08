@@ -1,0 +1,32 @@
+<div class="container" style="margin-top:20px;">
+  <h2>新規取引</h2>
+  <p>誰かに送金する</p>
+
+  <br>
+
+  <div class="form-group">
+    <label for="fromAddress">送り手</label>
+    <input type="text" name="fromAddress" id="fromAddress" class="form-control" aria-describedBy="fromAddressHelp" [(ngModel)]="walletKey.publicKey" disabled />
+    <small id="fromAddressHelp" class="form-text text-muted">
+      これは財布のアドレスです。他人の財布を使うことはできないのでこの値は変更できません。
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="toAddress">受け手</label>
+    <input type="text" name="toAddress" id="toAddress" class="form-control" aria-describedBy="toAddressHelp" [(ngModel)]="newTx.toAddress">
+    <small id="toAddressHelp" class="form-text text-muted">
+      ここには送金の受け取りての財布のアドレスを入力します。
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="amount">金額</label>
+    <input type="number" name="amount" id="amount" class="form-control" aria-describedBy="amountHelp" [(ngModel)]="newTx.amount">
+    <small id="amountHelp" class="form-text text-muted">
+      このアプリケーションでは残高のチェックはしていません。
+    </small>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="createTransaction()">取引を作成して署名</button>
+</div>

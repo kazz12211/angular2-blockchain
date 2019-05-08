@@ -1,0 +1,13 @@
+<div class="container" style="margin-top:20px;">
+  <h2>ブロック</h2>
+  <p>ブロックをクリックしてトランザクションを表示</p>
+</div>
+
+<div class="container" style="overflow-x: scroll;white-space: nowrap;margin-top:20px;">
+  <app-block-view *ngFor="let block of blocks" [block]="block" [selectedBlock]="selectedBlock" (click)="showTransaction(block)"></app-block-view>
+</div>
+
+<div class="container" style="margin-top:20px;">
+  <h2>ブロック{{ getBlockNumber(selectedBlock) }} 内のトランザクション</h2>
+  <app-transactions-table [transactions]="selectedBlock.transactions"></app-transactions-table>
+</div>
